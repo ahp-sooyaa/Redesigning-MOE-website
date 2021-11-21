@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .bg-hero {
+        background-image: url('/Redesigning-MOE-website/images/hero_image.jpg');
+        background-size: cover;
+    }
+}
