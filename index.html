@@ -7,30 +7,60 @@
     <title>Myanmar Online Entrepreneur</title>
 
     <link rel="stylesheet" href="build/tailwind.css">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        [x-cloak] {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <header class="bg-hero h-532 relative text-white">
+    <header class="bg-hero h-532 relative text-gray-700">
         <div class="absolute bg-black bg-opacity-50 inset-0 z-0"></div>
-        <nav class="fixed flex items-center justify-between px-20 right-0 top-0 w-full z-20" style="
-          background-color: rgb(92 92 92 / 15%);
-          backdrop-filter: blur(30px);
-        ">
-            <img src="images/moe-myanmar-online-entrepreneur.png" alt="logo" class="h-12 w-28">
-            <div class="flex text-lg space-x-10">
-                <a href="index.html" class="py-7 uppercase font-semibold border-b-4 border-white text-white">Home</a>
-                <a href="courses.html" class="py-7 uppercase font-semibold text-gray-400 border-b-4 border-transparent hover:border-white hover:text-white">Courses</a>
-                <a href="account.html" class="py-7 uppercase font-semibold text-gray-400 border-b-4 border-transparent hover:border-white hover:text-white">Account</a>
+        <nav x-data="nav()" class="bg-white fixed p-5 lg:px-20 lg:py-0 right-0 top-0 w-full z-20">
+            <!-- primary nav -->
+            <div class="flex items-center justify-between">
+                <img src="images/moe-myanmar-online-entrepreneur.png" alt="logo" class="h-12 w-28">
+                <div class="hidden lg:flex text-lg space-x-10">
+                    <a href="index.html" class="py-7 uppercase font-semibold border-b-4 border-gray-700 text-gray-700">Home</a>
+                    <a href="courses.html" class="py-7 uppercase font-semibold text-gray-400 border-b-4 border-transparent hover:border-gray-700 hover:text-gray-700">Courses</a>
+                    <a href="account.html" class="py-7 uppercase font-semibold text-gray-400 border-b-4 border-transparent hover:border-gray-700 hover:text-gray-700">Account</a>
+                </div>
+                <div class="hidden lg:flex w-16 justify-between">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </div>
+
+                <div class="block lg:hidden bg-opacity-30 bg-white p-2 rounded text-white">
+                    <img @click="isOpen = true" x-show="! isOpen" src="/Redesigning-MOE-website/assets/icon-hamburger.svg" alt="icon-hamburger">
+                    <img x-cloak @click="isOpen = false" x-show="isOpen" src="/Redesigning-MOE-website/assets/icon-close.svg" alt="icon-close">
+                </div>
             </div>
-            <div class="flex w-16 justify-between">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
+
+            <!-- mobile nav dropdown -->
+            <div x-cloak x-show="isOpen">
+                <div class="my-5 flex flex-col text-lg space-x-0 lg:space-x-10">
+                    <a href="index.html" class="pb-2 mb-3 uppercase font-semibold border-b-4 border-gray-700 text-gray-700">Home</a>
+                    <a href="courses.html" class="pb-2 uppercase font-semibold text-gray-400 border-b-4 border-transparent hover:border-gray-700 hover:text-gray-700">Courses</a>
+                    <a href="account.html" class="pb-2 uppercase font-semibold text-gray-400 border-b-4 border-transparent hover:border-gray-700 hover:text-gray-700">Account</a>
+                </div>
+                <div class="flex w-16 justify-between">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </div>
             </div>
         </nav>
-        <div class="absolute top-72 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-1/3 z-10">
+
+        <div class="text-white absolute top-72 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full px-5 lg:w-1/3 z-10">
             <h1 class="text-5xl mb-10 font-bold">၆လ ၂ဆ</h1>
             <p class="leading-9">
                 ၆လအတွင်း ရောင်းအား (၂)ဆ တိုးတက်ချင်တဲ့ လုပ်ငန်းရှင်များကို ကူညီပေးနေတဲ့ နေရာလေးပါ။
@@ -49,7 +79,7 @@
                     <h1 class="font-bold mb-8 text-lg tracking-wider uppercase">Our Latest Courses</h1>
                     <a href="courses.html" class="text-red-500">See all courses</a>
                 </div>
-                <div class="grid grid-cols-3 gap-7">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-7">
                     <div class="bg-gray-50 border border-gray-100 py-10 px-8 rounded-2xl shadow">
                         <h1 class="font-bold text-lg mb-2">title of course</h1>
                         <p class="mb-6 text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint ad nulla numquam sapiente molestias voluptatem incidunt repellat.</p>
@@ -102,7 +132,7 @@
                     <h1 class="font-bold mb-8 text-lg tracking-wider uppercase">Books</h1>
                     <a href="" class="text-white">See all books</a>
                 </div>
-                <div class="grid grid-cols-3 gap-16">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-16">
                     <div>
                         <img src="images/book.jpg" alt="book-cover">
                         <h1 class="font-bold text-lg mt-5">title of book</h1>
@@ -156,13 +186,13 @@
         </section>
         
         <section class="bg-white mt-20 text-black">
-            <div class="bg-gradient-to-bl from-red-400 mx-auto px-20 py-20 rounded-2xl shadow-inner text-center text-white to-red-500 w-11/12">
+            <div class="bg-gradient-to-bl from-red-400 mx-auto p-5 lg:p-20 rounded-2xl shadow-inner text-center text-white to-red-500 w-11/12">
                 <span>Our New Class</span>
-                <h1 class="font-bold mb-5 text-3xl">
+                <h1 class="font-bold mb-5 text-xl lg:text-3xl">
                     Class SNS – Study Note Session
                 </h1>
         
-                <p class="leading-9">
+                <p class="leading-7 lg:leading-9">
                     ဒီချိန်မှာ အိမ်မှာ ဒီတိုင်းမနေပဲကိုယ့်ရဲ့ သိပြီးသားအသိတွေ ထပ်တိုးအောင်ပညာရည်ပိုပြည့်ဝအောင်လေ့လာထားချင်တယ် ဆိုရင်စီးပွားရေးနဲ့ သက်ဆိုင်တဲ့ တပတ်လေ့လာထားသမျှနည်းသစ်၊ ဗဟုသုတအသစ်၊အတွေးအခေါ်အသစ်တွေကိုသင်ပေးနေတဲ့ Study Note Sessionလေးရှိပါတယ်
                 </p>
                 <button class="bg-white text-red-500 px-5 py-2 mt-5 hover:bg-gray-100">More Detail</button>
@@ -172,7 +202,7 @@
         <section class="bg-white text-black">
             <div class="mx-auto py-20 w-11/12">
                 <h1 class="text-center font-bold mb-8 text-lg tracking-wider uppercase">Customers' Reviews</h1>
-                <div class="grid grid-cols-3 gap-7">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-7">
                     <div>
                         <svg height="40" width="40" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg" class=" fill-current text-gray-300 z-0">
                             <path
@@ -213,18 +243,18 @@
             </div>
         </section>
 
-        <section class="bg-gradient-to-b from-white text-white to-red-500">
+        <section>
             <div class="mx-auto py-20 w-11/12">
-                <div class="flex justify-between text-red-500">
+                <div class="flex justify-between text-black">
                     <h1 class="font-bold mb-8 text-lg tracking-wider uppercase">Our latest blogs</h1>
                     <a href="">See all blogs</a>
                 </div>
-                <div class="grid grid-cols-3 gap-7">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-7">
                     <div>
                         <img src="images/book.jpg" alt="book-cover">
                         <h1 class="font-bold text-lg mt-5">title of blog</h1>
-                        <p class="mb-4 text-gray-100">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint ad nulla numquam sapiente molestias voluptatem incidunt repellat.</p>
-                        <div class="flex text-sm text-red-200">
+                        <p class="mb-4 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint ad nulla numquam sapiente molestias voluptatem incidunt repellat.</p>
+                        <div class="flex text-sm text-gray-500">
                             <span class="mr-2">Nov 4</span> .
                             <span class="mx-2">4 min read</span> .
                             <div class="ml-2 bg-red-300 text-red-600 rounded-2xl inline-block px-4">
@@ -235,8 +265,8 @@
                     <div>
                         <img src="images/book.jpg" alt="book-cover">
                         <h1 class="font-bold text-lg mt-5">title of blog</h1>
-                        <p class="mb-4 text-gray-100">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint ad nulla numquam sapiente molestias voluptatem incidunt repellat.</p>
-                        <div class="flex text-sm text-red-200">
+                        <p class="mb-4 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint ad nulla numquam sapiente molestias voluptatem incidunt repellat.</p>
+                        <div class="flex text-sm text-gray-500">
                             <span class="mr-2">Nov 4</span> .
                             <span class="mx-2">4 min read</span> .
                             <div class="ml-2 bg-red-300 text-red-600 rounded-2xl inline-block px-4">
@@ -247,8 +277,8 @@
                     <div>
                         <img src="images/book.jpg" alt="book-cover">
                         <h1 class="font-bold text-lg mt-5">title of blog</h1>
-                        <p class="mb-4 text-gray-100">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint ad nulla numquam sapiente molestias voluptatem incidunt repellat.</p>
-                        <div class="flex text-sm text-red-200">
+                        <p class="mb-4 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint ad nulla numquam sapiente molestias voluptatem incidunt repellat.</p>
+                        <div class="flex text-sm text-gray-500">
                             <span class="mr-2">Nov 4</span> .
                             <span class="mx-2">4 min read</span> .
                             <div class="ml-2 bg-red-300 text-red-500 shadow rounded-2xl inline-block px-4">
@@ -261,12 +291,12 @@
         </section>
     </main>
 
-    <footer class="bg-red-500 text-white">
-        <div class="mx-auto pt-20 pb-5 w-11/12">
-            <div class="flex space-x-32">
+    <footer class="bg-gray-700 text-white">
+        <div class="mx-auto pt-10 lg:pt-20 pb-5 w-11/12">
+            <div class="flex flex-col lg:flex-row space-y-10 space-x-0 lg:space-y-0 lg:space-x-32">
                 <div>
                     <h1 class="text-lg font-bold mb-5">Support Menu</h1>
-                    <ul class="space-y-3 text-red-100">
+                    <ul class="space-y-3 text-gray-100">
                         <li>About Moe</li>
                         <li>Contact Us</li>
                         <li>My account</li>
@@ -275,7 +305,7 @@
                 </div>
                 <div class="w-80">
                     <h1 class="text-lg font-bold mb-5">Recent Blogs</h1>
-                    <ul class="space-y-3 text-red-100">
+                    <ul class="space-y-3 text-gray-100">
                         <li>Channel Management – ဝယ်သူသို့ရောက်မည့် လမ်းကြောင်းကို စီမံခန့်ခွဲခြင်း</li>
                         <li>Market Segmentation – ဈေးကွက်၏ ပိုင်းခြားသတ်မှတ် ခြားနားချက်များ</li>
                         <li>စိတ်ဓာတ်ကြံ့ခိုင်သော စွန့်ဦးတီထွင်သူတွေ ရှောင်ရှားတဲ့ အလေ့အကျင့် ၁၀ ခု</li>
@@ -285,7 +315,7 @@
                 </div>
                 <div>
                     <h1 class="text-lg font-bold mb-5">Contact Information</h1>
-                    <ul class="space-y-3 text-red-100">
+                    <ul class="space-y-3 text-gray-100">
                         <li class="flex space-x-3">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-1.5" viewBox="0 0 20 20" fill="currentColor">
                               <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
@@ -313,9 +343,17 @@
                     </ul>
                 </div>
             </div>
-            <hr class="my-10 border border-red-400">
+            <hr class="my-10 border border-gray-400">
             <div class="text-center">© 2021 All Right Reserved. Aung Htet Paing.</div>
         </div>
     </footer>
+
+    <script>
+        function nav() {
+            return {
+                isOpen: false
+            }
+        }
+    </script>
 </body>
 </html>

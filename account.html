@@ -8,59 +8,88 @@
     <title>Myanmar Online Entrepreneur</title>
 
     <link rel="stylesheet" href="build/tailwind.css">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        [x-cloak] {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
-    <header class="h-532 relative text-black">
-        <nav class="fixed bg-white flex items-center justify-between px-20 right-0 top-0 w-full z-20 shadow">
-            <img src="images/moe-myanmar-online-entrepreneur.png" alt="logo" class="h-12 w-28">
-            <div class="flex text-lg space-x-10">
-                <a href="index.html" class="py-7 uppercase font-semibold text-gray-400">Home</a>
-                <a href="courses.html" class="py-7 uppercase font-semibold text-gray-400">Courses</a>
-                <a href="account.html" class="py-7 uppercase font-semibold border-b-4 border-black text-black">
-                    Account
-                </a>
+    <header class="relative text-black">
+        <nav x-data="nav()" class="fixed bg-white p-5 lg:px-20 lg:py-0 right-0 top-0 w-full z-20 shadow">
+            <!-- primary nav -->
+            <div class="flex items-center justify-between">
+                <img src="images/moe-myanmar-online-entrepreneur.png" alt="logo" class="h-12 w-28">
+                <div class="hidden lg:flex text-lg space-x-10">
+                    <a href="index.html" class="py-7 uppercase font-semibold text-gray-400 border-b-4 border-transparent hover:border-black hover:text-black">Home</a>
+                    <a href="courses.html" class="py-7 uppercase font-semibold text-gray-400 border-b-4 border-transparent hover:border-black hover:text-black">Courses</a>
+                    <a href="account.html" class="py-7 uppercase font-semibold border-b-4 border-black text-black">Account</a>
+                </div>
+                <div class="hidden lg:flex w-16 justify-between">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </div>
+
+                <div class="block lg:hidden bg-opacity-30 bg-white p-2 rounded text-white">
+                    <img @click="isOpen = true" x-show="! isOpen" src="/Redesigning-MOE-website/assets/icon-hamburger.svg" alt="icon-hamburger">
+                    <img x-cloak @click="isOpen = false" x-show="isOpen" src="/Redesigning-MOE-website/assets/icon-close.svg" alt="icon-close">
+                </div>
             </div>
-            <div class="flex w-16 justify-between">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
+
+            <!-- mobile nav dropdown -->
+            <div x-cloak x-show="isOpen">
+                <div class="my-5 flex flex-col text-lg space-x-0 lg:space-x-10">
+                    <a href="index.html" class="pb-2 uppercase font-semibold text-gray-400">Home</a>
+                    <a href="courses.html" class="pb-2 uppercase font-semibold text-gray-400">Courses</a>
+                    <a href="account.html" class="pb-2 uppercase font-semibold border-b-4 border-black text-black">
+                        Account
+                    </a>
+                </div>
+                <div class="flex w-16 justify-between">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </div>
             </div>
         </nav>
-        <div class="-translate-x-1/2 absolute bg-gradient-to-r from-red-500 left-1/2 pb-10 pt-20 px-20 rounded-2xl shadow text-center text-white to-red-400 top-48 transform w-11/12 z-10">
-            <img src="images/avatar.jpg" alt="avatar" class="-top-16 -translate-x-1/2 absolute border-4 border-white left-1/2 rounded-full transform w-32">
-            <h1 class="text-5xl mb-10 font-bold">John Doe</h1>
 
-            <div class="flex justify-center space-x-5">
-                <div class="bg-red-400 w-32 p-5 rounded-2xl text-white">
+        <div class="bg-gradient-to-r from-red-500 lg:px-20 mt-52 mx-auto pb-10 pt-20 px-5 rounded-2xl shadow text-center text-white to-red-400 w-11/12 z-10">
+            <img src="images/avatar.jpg" alt="avatar" class="-top-16 -translate-x-1/2 absolute border-4 border-white left-1/2 rounded-full transform w-32">
+            <h1 class="text-2xl lg:text-5xl mb-10 font-bold">John Doe</h1>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-y-5 lg:gap-0 place-items-center lg:w-1/2 lg:mx-auto">
+                <div class="shadow bg-red-400 w-32 p-5 rounded-2xl text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-7 mx-auto text-red-100" viewBox="0 0 20 20" fill="currentColor">
                       <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
                     </svg>
                     <div class="text-center text-xl font-bold">0</div>
                     <div class="text-red-100 text-sm mt-2">Courses</div>
                 </div>
-                <div class="bg-red-400 w-32 p-5 rounded-2xl text-white">
+                <div class="shadow bg-red-400 w-32 p-5 rounded-2xl text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-7 mx-auto text-red-100" viewBox="0 0 20 20" fill="currentColor">
                       <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
                     </svg>
                     <div class="text-center text-xl font-bold">0</div>
                     <div class="text-red-100 text-sm mt-2">Completed</div>
                 </div>
-                <div class="bg-red-400 w-32 p-5 rounded-2xl text-white">
+                <div class="shadow bg-red-400 w-32 p-5 rounded-2xl text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-7 mx-auto text-red-100" viewBox="0 0 20 20" fill="currentColor">
                       <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
                     </svg>
                     <div class="text-center text-xl font-bold">0</div>
                     <div class="text-red-100 text-sm mt-2">Certificates</div>
                 </div>
-                <div class="bg-red-400 w-32 p-5 rounded-2xl text-white">
+                <div class="shadow bg-red-400 w-32 p-5 rounded-2xl text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-7 mx-auto text-red-100" viewBox="0 0 20 20" fill="currentColor">
                       <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
                     </svg>
@@ -71,44 +100,127 @@
         </div>
     </header>
 
-    <main>
+    <main x-data="main()">
         <section class="bg-white">
             <div class="mx-auto py-20 w-11/12">
-                <div class="flex border-b-2 border-gray-100 justify-center text-lg mb-10">
-                    <a href="courses.html" class="-mb-0.5 px-5 py-2 uppercase font-semibold border-b-4 border-red-500 text-black">Account Information</a>
+                <div class="flex border-b-2 border-gray-100 justify-between lg:justify-center items-center text-lg lg:mb-10">
+                    <a href="courses.html" class="-mb-0.5 lg:px-5 py-2 uppercase font-semibold lg:border-b-4 lg:border-red-500 text-black">
+                        Account Information
+                    </a>
+                    <div class="block md:hidden">
+                        <button @click="isOpen = ! isOpen">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                              <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                            </svg>
+                        </button>
+                        <div x-show="isOpen">
+                            <ul class="absolute right-4 bg-white w-3/4 border py-3 rounded-2xl shadow space-y-5">
+                                <li 
+                                    @click="activeTab = 'dashboard'; setActiveTab('dashboard')" class="focus:bg-red-100 focus:text-red-500 px-5" :class="activeTab == 'dashboard' ? 'text-red-500' : ''">
+                                    Dashboard
+                                </li>
+                                <li 
+                                    @click="activeTab = 'orders'; setActiveTab('orders')" class="focus:bg-red-100 focus:text-red-500 px-5" :class="activeTab == 'orders' ? 'text-red-500' : ''">
+                                    Orders
+                                </li>
+                                <li 
+                                    @click="activeTab = 'downloads'; setActiveTab('downloads')" class="focus:bg-red-100 focus:text-red-500 px-5" :class="activeTab == 'downloads' ? 'text-red-500' : ''">
+                                    Downloads
+                                </li>
+                                <li 
+                                    @click="activeTab = 'addresses'; setActiveTab('addresses')" class="focus:bg-red-100 focus:text-red-500 px-5" :class="activeTab == 'addresses' ? 'text-red-500' : ''">
+                                    Addresses
+                                </li>
+                                <li 
+                                    @click="activeTab = 'account-detail'; setActiveTab('account-detail')" class="focus:bg-red-100 focus:text-red-500 px-5" :class="activeTab == 'account-detail' ? 'text-red-500' : ''">
+                                    Account Detail
+                                </li>
+                                <li 
+                                    @click="activeTab = 'payments'; setActiveTab('payments')" class="focus:bg-red-100 focus:text-red-500 px-5" :class="activeTab == 'payments' ? 'text-red-500' : ''">
+                                    Paypal Payments
+                                </li>
+                                <li 
+                                    @click="activeTab = 'logout'; setActiveTab('logout')" class="focus:bg-red-100 focus:text-red-500 px-5" :class="activeTab == 'logout' ? 'text-red-500' : ''">
+                                    Logout
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="py-10">
-                    <div class="flex w-3/4 mx-auto">
-                        <ul class="tab-links w-56 ml-10 flex-none">
-                            <li id="dashboard" class="tab-link bg-red-100 border border-red-500 cursor-pointer flex font-medium hover:bg-red-100 hover:border-red-500 hover:text-red-500 items-center mb-2 px-6 py-2 rounded-xl text-red-500 text-sm">Dashboard</li>
-                            <li id="orders" class="tab-link flex items-center mb-2 text-sm hover:text-red-500 hover:border-red-500 hover:bg-red-100 py-2 px-6 border border-transparent rounded-xl font-normal cursor-pointer">Orders</li>
-                            <li id="downloads" class="tab-link flex items-center mb-2 text-sm hover:text-red-500 hover:border-red-500 hover:bg-red-100 py-2 px-6 border border-transparent rounded-xl font-normal cursor-pointer">Downloads</li>
-                            <li id="addresses" class="tab-link flex items-center mb-2 text-sm hover:text-red-500 hover:border-red-500 hover:bg-red-100 py-2 px-6 border border-transparent rounded-xl font-normal cursor-pointer">Addresses</li>
-                            <li id="account-detail" class="tab-link flex items-center mb-2 text-sm hover:text-red-500 hover:border-red-500 hover:bg-red-100 py-2 px-6 border border-transparent rounded-xl font-normal cursor-pointer">Account Details</li>
-                            <li id="payments" class="tab-link flex items-center mb-2 text-sm hover:text-red-500 hover:border-red-500 hover:bg-red-100 py-2 px-6 border border-transparent rounded-xl font-normal cursor-pointer">Paypal Payments</li>
-                            <li id="logout" class="tab-link flex items-center mb-2 text-sm hover:text-red-500 hover:border-red-500 hover:bg-red-100 py-2 px-6 border border-transparent rounded-xl font-normal cursor-pointer">Logout</li>
+                <div class="pt-5">
+                    <div class="flex w-full lg:w-3/4 mx-auto">
+                        <ul class="hidden lg:block w-56 ml-10 flex-none">
+                            <li 
+                                @click="activeTab = 'dashboard'; setActiveTab('dashboard')" 
+                                class="tab-link border border-transparent cursor-pointer flex font-medium hover:bg-red-100 hover:border-red-500 hover:text-red-500 items-center mb-2 px-6 py-2 rounded-xl text-sm"
+                                :class="activeTab == 'dashboard' ? 'bg-red-100 border-red-500 text-red-500' : ''"
+                            >
+                                Dashboard
+                            </li>
+                            <li 
+                                @click="activeTab = 'orders'; setActiveTab('orders')"
+                                class="tab-link flex items-center mb-2 text-sm hover:text-red-500 hover:border-red-500 hover:bg-red-100 py-2 px-6 border border-transparent rounded-xl font-normal cursor-pointer"
+                                :class="activeTab == 'orders' ? 'bg-red-100 border-red-500 text-red-500' : ''"
+                            >
+                                Orders
+                            </li>
+                            <li 
+                                @click="activeTab = 'downloads'; setActiveTab('downloads')"
+                                class="tab-link flex items-center mb-2 text-sm hover:text-red-500 hover:border-red-500 hover:bg-red-100 py-2 px-6 border border-transparent rounded-xl font-normal cursor-pointer"
+                                :class="activeTab == 'downloads' ? 'bg-red-100 border-red-500 text-red-500' : ''"
+                            >
+                                Downloads
+                            </li>
+                            <li 
+                                @click="activeTab = 'addresses'; setActiveTab('addresses')" 
+                                class="tab-link flex items-center mb-2 text-sm hover:text-red-500 hover:border-red-500 hover:bg-red-100 py-2 px-6 border border-transparent rounded-xl font-normal cursor-pointer"
+                                :class="activeTab == 'addresses' ? 'bg-red-100 border-red-500 text-red-500' : ''"
+                            >
+                                Addresses
+                            </li>
+                            <li 
+                                @click="activeTab = 'account-detail'; setActiveTab('account-detail')"
+                                class="tab-link flex items-center mb-2 text-sm hover:text-red-500 hover:border-red-500 hover:bg-red-100 py-2 px-6 border border-transparent rounded-xl font-normal cursor-pointer"
+                                :class="activeTab == 'account-detail' ? 'bg-red-100 border-red-500 text-red-500' : ''"
+                            >
+                                Account Details
+                            </li>
+                            <li 
+                                @click="activeTab = 'payments'; setActiveTab('payments')"
+                                class="tab-link flex items-center mb-2 text-sm hover:text-red-500 hover:border-red-500 hover:bg-red-100 py-2 px-6 border border-transparent rounded-xl font-normal cursor-pointer"
+                                :class="activeTab == 'payments' ? 'bg-red-100 border-red-500 text-red-500' : ''"
+                            >
+                                Paypal Payments
+                            </li>
+                            <li 
+                                @click="activeTab = 'logout'; setActiveTab('logout')"
+                                class="tab-link flex items-center mb-2 text-sm hover:text-red-500 hover:border-red-500 hover:bg-red-100 py-2 px-6 border border-transparent rounded-xl font-normal cursor-pointer"
+                                :class="activeTab == 'logout' ? 'bg-red-100 border-red-500 text-red-500' : ''"
+                            >
+                                Logout
+                            </li>
                         </ul>
 
-                        <div class="tab-contents flex-1">
-                            <div id="dashboard-content" class="block tab-content h-full ml-10 text-gray-600">
+                        <div x-cloak class="flex-1">
+                            <div x-show="activeTab == 'dashboard'" class="h-full ml-0 lg:ml-10 text-gray-600 mb-6">
                                 From your account dashboard you can view your recent orders, manage your shipping and billing addresses, and edit your
                                 password and account details.
                             </div>
 
-                            <div id="orders-content" class="hidden text-center tab-content h-full ml-10 text-gray-600">
+                            <div x-show="activeTab == 'orders'" class="text-center h-full ml-0 lg:ml-10 text-gray-600 mb-6">
                                 <p>No order has been made yet.</p>
                                 <button class="inline-block px-5 bg-red-500 py-2 hover:bg-red-600 text-white mt-5">
                                     Browse Products
                                 </button>
                             </div>
-                            <div id="downloads-content" class="hidden tab-content h-full ml-10 text-gray-600">
+                            <div x-show="activeTab == 'downloads'" class="text-center h-full ml-0 lg:ml-10 text-gray-600 mb-6">
                                 <p>No downloads available yet.</p>
                                 <button class="inline-block px-5 bg-red-500 py-2 hover:bg-red-600 text-white mt-5">
                                     Browse Products
                                 </button>
                             </div>
-                            <div id="addresses-content" class="hidden tab-content h-full ml-10 text-gray-600">
+                            <div x-show="activeTab == 'addresses'" class="h-full ml-0 lg:ml-10 text-gray-600">
                                 <div class="mb-6">
                                     <h1 class="font-bold mb-3">
                                         Billing Address
@@ -122,7 +234,7 @@
                                     <textarea name="shipping-address" rows="5" class="border-gray-300 focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50 rounded-md shadow-sm w-full mb-4 mt-2 block"></textarea>
                                 </div>
                             </div>
-                            <div id="account-detail-content" class="hidden tab-content h-full ml-10 text-gray-600">
+                            <div x-show="activeTab == 'account-detail'" class="h-full ml-0 lg:ml-10 text-gray-600 mb-6">
                                 <form action="/action_page.php">
                                   <label for="fname">First name</label><br>
                                   <input type="text" class="border-gray-300 focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50 rounded-md shadow-sm w-full mb-4 mt-2 block" required autofocus>
@@ -148,10 +260,10 @@
                                   <input type="submit" value="Submit" class="inline-block px-5 bg-red-500 py-2 hover:bg-red-600 text-white mt-5" required>
                                 </form> 
                             </div>
-                            <div id="payments-content" class="hidden tab-content h-full ml-10 text-gray-600">
+                            <div x-show="activeTab == 'payments'" class="h-full ml-0 lg:ml-10 text-gray-600 mb-6">
                                 No payments available yet.
                             </div>
-                            <div id="logout-content" class="hidden tab-content h-full ml-10 text-gray-600">
+                            <div x-show="activeTab == 'logout'" class="h-full ml-0 lg:ml-10 text-gray-600 mb-6">
                                 Boom! We can't let you out of here. :)
                             </div>
                         </div>
@@ -161,12 +273,12 @@
         </section>
     </main>
 
-    <footer class="bg-red-500 text-white">
-        <div class="mx-auto pt-20 pb-5 w-11/12">
-            <div class="flex space-x-32">
+    <footer class="bg-gray-700 text-white">
+        <div class="mx-auto pt-10 lg:pt-20 pb-5 w-11/12">
+            <div class="flex flex-col lg:flex-row space-y-10 space-x-0 lg:space-y-0 lg:space-x-32">
                 <div>
                     <h1 class="text-lg font-bold mb-5">Support Menu</h1>
-                    <ul class="space-y-3">
+                    <ul class="space-y-3 text-gray-100">
                         <li>About Moe</li>
                         <li>Contact Us</li>
                         <li>My account</li>
@@ -175,7 +287,7 @@
                 </div>
                 <div class="w-80">
                     <h1 class="text-lg font-bold mb-5">Recent Blogs</h1>
-                    <ul class="space-y-3">
+                    <ul class="space-y-3 text-gray-100">
                         <li>Channel Management – ဝယ်သူသို့ရောက်မည့် လမ်းကြောင်းကို စီမံခန့်ခွဲခြင်း</li>
                         <li>Market Segmentation – ဈေးကွက်၏ ပိုင်းခြားသတ်မှတ် ခြားနားချက်များ</li>
                         <li>စိတ်ဓာတ်ကြံ့ခိုင်သော စွန့်ဦးတီထွင်သူတွေ ရှောင်ရှားတဲ့ အလေ့အကျင့် ၁၀ ခု</li>
@@ -185,13 +297,10 @@
                 </div>
                 <div>
                     <h1 class="text-lg font-bold mb-5">Contact Information</h1>
-                    <ul class="space-y-3">
+                    <ul class="space-y-3 text-gray-100">
                         <li class="flex space-x-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-1.5" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path fill-rule="evenodd"
-                                    d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                                    clip-rule="evenodd" />
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-1.5" viewBox="0 0 20 20" fill="currentColor">
+                              <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
                             </svg>
                             <p>
                                 No. 1186, Pin Lon Road, <br>
@@ -199,19 +308,14 @@
                             </p>
                         </li>
                         <li class="flex space-x-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-1.5" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-1.5" viewBox="0 0 20 20" fill="currentColor">
+                              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                             </svg>
                             <p>(+95) 09 880 578482</p>
                         </li>
                         <li class="flex space-x-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-1.5" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path fill-rule="evenodd"
-                                    d="M14.243 5.757a6 6 0 10-.986 9.284 1 1 0 111.087 1.678A8 8 0 1118 10a3 3 0 01-4.8 2.401A4 4 0 1114 10a1 1 0 102 0c0-1.537-.586-3.07-1.757-4.243zM12 10a2 2 0 10-4 0 2 2 0 004 0z"
-                                    clip-rule="evenodd" />
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-1.5" viewBox="0 0 20 20" fill="currentColor">
+                              <path fill-rule="evenodd" d="M14.243 5.757a6 6 0 10-.986 9.284 1 1 0 111.087 1.678A8 8 0 1118 10a3 3 0 01-4.8 2.401A4 4 0 1114 10a1 1 0 102 0c0-1.537-.586-3.07-1.757-4.243zM12 10a2 2 0 10-4 0 2 2 0 004 0z" clip-rule="evenodd" />
                             </svg>
                             <p>
                                 moeonlinetraining@gmail.com, <br>
@@ -221,7 +325,7 @@
                     </ul>
                 </div>
             </div>
-            <hr class="my-10 border border-red-400">
+            <hr class="my-10 border border-gray-400">
             <div class="text-center">© 2021 All Right Reserved. Aung Htet Paing.</div>
         </div>
     </footer>
@@ -231,22 +335,21 @@
 integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-    if(localStorage.getItem('active-tab')) {
-        setActiveTab(localStorage.getItem('active-tab'))
+    function main() {
+        return {
+            isOpen: false,
+            activeTab: localStorage.getItem('active-tab') ? localStorage.getItem('active-tab') : 'dashboard',
+
+            setActiveTab(tabName) {
+                localStorage.setItem('active-tab', tabName)
+            }
+        }
     }
 
-    $('.tab-link').on('click', function() {
-        let clickedTab = $(this).attr('id');
-
-        localStorage.setItem('active-tab', '#' + clickedTab);
-
-        setActiveTab('#' + clickedTab)
-    })
-
-    function setActiveTab(clickedTab) {
-        $(clickedTab).addClass('border-red-500 text-red-500 bg-red-100').parents('.tab-links').find('li').not($(clickedTab)).removeClass('border-red-500 text-red-500 bg-red-100').addClass('border-transparent');
-
-        $(clickedTab + '-content').addClass('block').removeClass('hidden').parents('.tab-contents').find('.tab-content').not($(clickedTab + '-content')).addClass('hidden').removeClass('block');
+    function nav() {
+        return {
+            isOpen: false
+        }
     }
 </script>
 
