@@ -104,43 +104,44 @@
         <section class="bg-white">
             <div class="mx-auto py-20 w-11/12">
                 <div class="flex border-b-2 border-gray-100 justify-between lg:justify-center items-center text-lg lg:mb-10">
-                    <a href="courses.html" class="-mb-0.5 lg:px-5 py-2 uppercase font-semibold lg:border-b-4 lg:border-red-500 text-black">
+                    <h1 class="-mb-0.5 lg:px-5 py-2 uppercase font-semibold lg:border-b-4 lg:border-red-500 text-black">
                         Account Information
-                    </a>
+                    </h1>
                     <div class="block md:hidden">
                         <button @click="isOpen = ! isOpen">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                               <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
                             </svg>
                         </button>
-                        <div x-show="isOpen">
-                            <ul class="absolute right-4 bg-white w-3/4 border py-3 rounded-2xl shadow space-y-5">
+                        <div x-cloak x-show="isOpen">
+                            <div @click="isOpen = false" class="fixed inset-0 bg-gray-500 bg-opacity-30 z-30"></div>
+                            <ul class="absolute right-4 bg-white w-3/4 border py-3 rounded-2xl shadow space-y-5 z-40">
                                 <li 
-                                    @click="activeTab = 'dashboard'; setActiveTab('dashboard')" class="focus:bg-red-100 focus:text-red-500 px-5" :class="activeTab == 'dashboard' ? 'text-red-500' : ''">
+                                    @click="setActiveTab('dashboard'); isOpen = false" class="focus:bg-red-100 focus:text-red-500 px-5" :class="activeTab == 'dashboard' ? 'text-red-500' : ''">
                                     Dashboard
                                 </li>
                                 <li 
-                                    @click="activeTab = 'orders'; setActiveTab('orders')" class="focus:bg-red-100 focus:text-red-500 px-5" :class="activeTab == 'orders' ? 'text-red-500' : ''">
+                                    @click="setActiveTab('orders'); isOpen = false" class="focus:bg-red-100 focus:text-red-500 px-5" :class="activeTab == 'orders' ? 'text-red-500' : ''">
                                     Orders
                                 </li>
                                 <li 
-                                    @click="activeTab = 'downloads'; setActiveTab('downloads')" class="focus:bg-red-100 focus:text-red-500 px-5" :class="activeTab == 'downloads' ? 'text-red-500' : ''">
+                                    @click="setActiveTab('downloads'); isOpen = false" class="focus:bg-red-100 focus:text-red-500 px-5" :class="activeTab == 'downloads' ? 'text-red-500' : ''">
                                     Downloads
                                 </li>
                                 <li 
-                                    @click="activeTab = 'addresses'; setActiveTab('addresses')" class="focus:bg-red-100 focus:text-red-500 px-5" :class="activeTab == 'addresses' ? 'text-red-500' : ''">
+                                    @click="setActiveTab('addresses'); isOpen = false" class="focus:bg-red-100 focus:text-red-500 px-5" :class="activeTab == 'addresses' ? 'text-red-500' : ''">
                                     Addresses
                                 </li>
                                 <li 
-                                    @click="activeTab = 'account-detail'; setActiveTab('account-detail')" class="focus:bg-red-100 focus:text-red-500 px-5" :class="activeTab == 'account-detail' ? 'text-red-500' : ''">
+                                    @click="setActiveTab('account-detail'); isOpen = false" class="focus:bg-red-100 focus:text-red-500 px-5" :class="activeTab == 'account-detail' ? 'text-red-500' : ''">
                                     Account Detail
                                 </li>
                                 <li 
-                                    @click="activeTab = 'payments'; setActiveTab('payments')" class="focus:bg-red-100 focus:text-red-500 px-5" :class="activeTab == 'payments' ? 'text-red-500' : ''">
+                                    @click="setActiveTab('payments'); isOpen = false" class="focus:bg-red-100 focus:text-red-500 px-5" :class="activeTab == 'payments' ? 'text-red-500' : ''">
                                     Paypal Payments
                                 </li>
                                 <li 
-                                    @click="activeTab = 'logout'; setActiveTab('logout')" class="focus:bg-red-100 focus:text-red-500 px-5" :class="activeTab == 'logout' ? 'text-red-500' : ''">
+                                    @click="setActiveTab('logout'); isOpen = false" class="focus:bg-red-100 focus:text-red-500 px-5" :class="activeTab == 'logout' ? 'text-red-500' : ''">
                                     Logout
                                 </li>
                             </ul>
@@ -152,49 +153,49 @@
                     <div class="flex w-full lg:w-3/4 mx-auto">
                         <ul class="hidden lg:block w-56 ml-10 flex-none">
                             <li 
-                                @click="activeTab = 'dashboard'; setActiveTab('dashboard')" 
+                                @click="setActiveTab('dashboard')" 
                                 class="tab-link border border-transparent cursor-pointer flex font-medium hover:bg-red-100 hover:border-red-500 hover:text-red-500 items-center mb-2 px-6 py-2 rounded-xl text-sm"
                                 :class="activeTab == 'dashboard' ? 'bg-red-100 border-red-500 text-red-500' : ''"
                             >
                                 Dashboard
                             </li>
                             <li 
-                                @click="activeTab = 'orders'; setActiveTab('orders')"
+                                @click="setActiveTab('orders')"
                                 class="tab-link flex items-center mb-2 text-sm hover:text-red-500 hover:border-red-500 hover:bg-red-100 py-2 px-6 border border-transparent rounded-xl font-normal cursor-pointer"
                                 :class="activeTab == 'orders' ? 'bg-red-100 border-red-500 text-red-500' : ''"
                             >
                                 Orders
                             </li>
                             <li 
-                                @click="activeTab = 'downloads'; setActiveTab('downloads')"
+                                @click="setActiveTab('downloads')"
                                 class="tab-link flex items-center mb-2 text-sm hover:text-red-500 hover:border-red-500 hover:bg-red-100 py-2 px-6 border border-transparent rounded-xl font-normal cursor-pointer"
                                 :class="activeTab == 'downloads' ? 'bg-red-100 border-red-500 text-red-500' : ''"
                             >
                                 Downloads
                             </li>
                             <li 
-                                @click="activeTab = 'addresses'; setActiveTab('addresses')" 
+                                @click="setActiveTab('addresses')" 
                                 class="tab-link flex items-center mb-2 text-sm hover:text-red-500 hover:border-red-500 hover:bg-red-100 py-2 px-6 border border-transparent rounded-xl font-normal cursor-pointer"
                                 :class="activeTab == 'addresses' ? 'bg-red-100 border-red-500 text-red-500' : ''"
                             >
                                 Addresses
                             </li>
                             <li 
-                                @click="activeTab = 'account-detail'; setActiveTab('account-detail')"
+                                @click="setActiveTab('account-detail')"
                                 class="tab-link flex items-center mb-2 text-sm hover:text-red-500 hover:border-red-500 hover:bg-red-100 py-2 px-6 border border-transparent rounded-xl font-normal cursor-pointer"
                                 :class="activeTab == 'account-detail' ? 'bg-red-100 border-red-500 text-red-500' : ''"
                             >
                                 Account Details
                             </li>
                             <li 
-                                @click="activeTab = 'payments'; setActiveTab('payments')"
+                                @click="setActiveTab('payments')"
                                 class="tab-link flex items-center mb-2 text-sm hover:text-red-500 hover:border-red-500 hover:bg-red-100 py-2 px-6 border border-transparent rounded-xl font-normal cursor-pointer"
                                 :class="activeTab == 'payments' ? 'bg-red-100 border-red-500 text-red-500' : ''"
                             >
                                 Paypal Payments
                             </li>
                             <li 
-                                @click="activeTab = 'logout'; setActiveTab('logout')"
+                                @click="setActiveTab('logout')"
                                 class="tab-link flex items-center mb-2 text-sm hover:text-red-500 hover:border-red-500 hover:bg-red-100 py-2 px-6 border border-transparent rounded-xl font-normal cursor-pointer"
                                 :class="activeTab == 'logout' ? 'bg-red-100 border-red-500 text-red-500' : ''"
                             >
@@ -342,6 +343,8 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
             setActiveTab(tabName) {
                 localStorage.setItem('active-tab', tabName)
+
+                this.activeTab = tabName
             }
         }
     }
